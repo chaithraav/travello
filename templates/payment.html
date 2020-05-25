@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>   
+    body {
+		color: #999;
+        background: lightblue;	
+        background-image: url('/static/images/home_slider.jpg');
+		background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+		font-family: 'Roboto', sans-serif;
+    }
+    .pay {
+        width: 400px;
+		margin: 0 auto;
+        padding: 0px 0;
+        color:black;
+    }
+</style> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Bootstrap Elegant Sign Up Form with Icons</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+    <div class="pay">
+    {% if messages %}
+    {% for message in messages %}
+        <div {% if message.tags %} class="alert alert={{message.tags}}" {% endif %} role="alert">
+            <h1>{{message}}</strong></h1>
+        </div>
+    {% endfor %}
+    {% else %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <h2>Pay Through Card Or Online</h2>
+            {% for field in form %}
+            <div>
+            <h3><label>{{field.label_tag}}</label></h3>
+            {{field}}
+            </div>
+            {% endfor %}
+            </div>
+            <button class="btn btn-danger" type="submit" style="background-color:goldenrod;">Submit</button>
+        </form>
+    {% endif %}
+    </div>
+</body>
+</html>

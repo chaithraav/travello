@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Bootstrap Elegant Sign Up Form with Icons</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+    <h1>Travello</h1>
+    <button type="button" class="btn btn-light"><a href="/travel">Home</a></button>
+    <br>
+    <br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">No_Of_People</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone_No</th>
+                        <th scope="col">Place</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total price</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{item.name}}</td>
+                        <td>{{item.gender}}</td>
+                        <td>{{item.no_of_people}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phone_no}}</td>
+                        <td>{{item.place_id}}</td>
+                        <td>{{item.place_id.price}}</td>
+                        <td>{% widthratio item.place_id.price 1 item.no_of_people%}</td>
+                        <td><a href="{% url 'book:edit' pk=item.pk %}"><button class="btn btn-warning">Edit</button></a></td>
+                        <td><a href="{% url 'book:delete' pk=item.pk %}"><button class="btn btn-danger">Detele</button></a></td>
+                        <td><a href="/travel/book/payment"><button class="btn btn-success">Pay</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+</body>
+</html>
